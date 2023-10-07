@@ -18,7 +18,7 @@ const TagHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 160px;
+    padding: 20px 40px;
 `
 
 const Logo = styled.a`
@@ -31,7 +31,7 @@ const Logo = styled.a`
 export function Header(props: HeaderProps){
     return (
         <TagHeader>
-            <Logo className={sairaStencil.className}> Perionix </Logo>
+            <Logo className={sairaStencil.className}> WizardryGym </Logo>
             <div> <PrimaryWInputSearchIcon placeholder="Pesquisando por algo?"/></div>
         </TagHeader>
     )
