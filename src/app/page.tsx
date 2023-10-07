@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilterBar } from './components/filter_bar';
+import { FilterBar } from '../components/filter_bar';
 import styles from './page.module.css' 
 
 
