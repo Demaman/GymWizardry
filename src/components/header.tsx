@@ -32,7 +32,7 @@ export function Header(props: HeaderProps){
     return (
         <TagHeader>
             <Logo className={sairaStencil.className}> WizardryGym </Logo>
-            <div> <PrimaryWInputSearchIcon placeholder="Pesquisando por algo?"/></div>
+            <PrimaryWInputSearchIcon placeholder="Pesquisando por algo?"/>
         </TagHeader>
     )
 }

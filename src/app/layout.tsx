@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { Saira } from 'next/font/google';
 import './globals.css';
 import { Header } from '../components/header';
+import { FilterContextProvider } from '@/contexts/filter_context';
 
 const saira = Saira({
   weight: ['300', '400', '500', '600'],
@@ -15,7 +16,7 @@ export const metadata = {
 };
 
 const bodyStyle = {
-  backgroundColor: 'lightgray', // Corrected property name
+  backgroundColor: '#b8bac7', // Corrected property name
 };
 
 export default function RootLayout({
@@ -25,9 +26,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={saira.className} style={bodyStyle}>
-        <Header />
-        {children}
+        <body className={saira.className} style={bodyStyle}>
+          <FilterContextProvider>
+            <Header />
+            {children}
+          </FilterContextProvider>
       </body>
     </html>
   );

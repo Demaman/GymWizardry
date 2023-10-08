@@ -1,9 +1,8 @@
 "use client"
+import { FilterType } from "@/constants/filter_types";
+import { useFilter } from "@/hooks/use_filter";
 import styled from "styled-components";
-
-interface FilterByTypeProps{
-
-}
+import { FilterByMuscle } from "./filter_by_muscle_kind";
 
 interface FilterItemProps{
     selected: boolean;
@@ -25,18 +24,49 @@ const FilterItem = styled.li<FilterItemProps>`
     color: var(--text-dark);
     cursor: pointer; 
 
-    border-bottom: ${props => props.selected ? '4px solid var(--orange-low)': ''};
+    border-bottom: ${props => props.selected ? '4px solid var(--logo-color)': ''};
 `
 
-export function FilterByType(){
-    return(
-        <FilterList>
-            <FilterItem selected={true}> Todos os exercícios</FilterItem>
-            <FilterItem selected={false}> Perna</FilterItem>
-            <FilterItem selected={false}> Peito</FilterItem>
-            <FilterItem selected={false}> Costas</FilterItem>
-            <FilterItem selected={false}> Biceps e Triceps</FilterItem>
-            <FilterItem selected={false}> Ombros</FilterItem>
+export function FilterByType() {
+    const { type, setType } = useFilter();
+  
+    const HandleChangeType = (value: FilterType) => {
+      setType(value);
+    }
+  
+    return (
+      <FilterList>
+            <FilterItem 
+                selected={type === FilterType.ALL} 
+                onClick={() => HandleChangeType(FilterType.ALL)}>
+                    Todos os exercícios
+            </FilterItem>
+            <FilterItem 
+                selected={type === FilterType.LEGS } 
+                onClick = {() => HandleChangeType(FilterType.LEGS)}>
+                    Pernas
+            </FilterItem>
+            <FilterItem 
+                selected={type === FilterType.CHEST } 
+                onClick = {() => HandleChangeType(FilterType.CHEST)}>
+                    Peito
+            </FilterItem>
+            <FilterItem 
+                selected={type === FilterType.BACKS } 
+                onClick = {() => HandleChangeType(FilterType.BACKS)}> 
+                    Costas
+            </FilterItem>
+            <FilterItem 
+                selected={type === FilterType.ARMS}
+                onClick = {() => HandleChangeType(FilterType.ARMS)}>
+                    Biceps e Triceps
+            </FilterItem>
+            <FilterItem 
+                selected={type === FilterType.SHOULDERS } 
+                onClick = {() => HandleChangeType(FilterType.SHOULDERS)}>
+                     Ombros
+            </FilterItem>
+            <FilterByMuscle selectedFilter={type} />
         </FilterList>
     )
 }

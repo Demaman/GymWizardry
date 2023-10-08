@@ -1,7 +1,9 @@
 :root{
     --border-radius: 12px;
-    --logo-color: #C594C5;
-    --bg-secondary: #b7bac7; 
+    --logo-color: #d60909;
+    --bg-border: #3f3c3c;
+    --bg-secondary: #b8bac7; 
+    --bg-thirdy: #8c8e99; 
     --text-dark: #000000;
     --orange-low: #FFA585; 
 }
@@ -14,6 +16,8 @@
 
 html,
 body{
+    background-color: #b7bac7;
     max-width: 100vw;
+    max-height: 100vh;
     overflow-x: hidden;
 }
