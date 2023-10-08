@@ -1,7 +1,7 @@
 export enum LEGS {
     QUADRIPCEPS = 'QUADRIPCEPS',
     POSTERIOR = 'POSTERIOR',
-    GLUTEOS = 'GLUTEOS',
+    GLUTEOS = 'GLÚTEOS',
     PANTURRILHAS = 'PANTURRILHAS',
   }
   
@@ -11,9 +11,9 @@ export enum LEGS {
   }
   
   export enum BACKS {
-    LATISSIMO = 'LATISSIMO',
-    TRAPEZIO = 'TRAPEZIO',
-    ROMBOIDES = 'ROMBOIDES',
+    LATISSIMO = 'LATÍSSIMO',
+    TRAPEZIO = 'TRAPÉZIO',
+    ROMBOIDES = 'ROMBÓIDES',
   }
   
   export enum SHOULDERS {
@@ -23,7 +23,7 @@ export enum LEGS {
   }
   
   export enum ARMS {
-    BICEPS = 'BICEPS',
-    TRICEPS = 'TRICEPS',
+    BICEPS = 'BÍCEPS',
+    TRICEPS = 'TRÍCEPS',
   }
   

@@ -14,9 +14,9 @@ const FilterContainer = styled.div`
     width: 100%;
     align-items: start;
     background-color: var(--bg-secondary);
+    padding-right: 311px;
 `
 export function FilterBar(props: FilterBarProps) {
-    const [selectedFilter, setSelectedFilter] = useState(FilterType.ALL);
 
     return (
         <FilterContainer>
