@@ -1,9 +1,13 @@
+"use client"
 import styled from "styled-components";
 import { ArrowDownIcon } from "./arrow_icon";
 import { useState } from "react";
 import { FilterType } from "@/constants/filter_types";
 import { ARMS, BACKS, CHEST, LEGS, SHOULDERS } from "@/constants/muscle_type";
+import { useFilter } from "@/hooks/use_filter";
 
+// Define a union type for all possible muscle enums
+type MuscleEnum = LEGS | CHEST | BACKS | SHOULDERS | ARMS;
 interface FilterByMuscleKind {
   selectedFilter: FilterType;
 }
@@ -38,11 +42,29 @@ const PriorityFilter = styled.ul`
   padding: 12px 16px;
   list-style: none;
   top: 100%;
+
+  li {
+    color: var(--text-dark);
+    font-weight: 400;
+    font-size: 14px
+    line-height: 22px;
+    cursor: pointer; 
+  }
+
+  li + li{
+    margin-top: 4px;
+  }
 `;
 
 export function FilterByMuscle({ selectedFilter }: FilterByMuscleKind) {
   const [isOpen, setIsOpen] = useState(false);
+  const {setMuscle} = useFilter();
   const handleOpen = () => setIsOpen((prev) => !prev);
+
+  const handleUpdateMuscle = (value: MuscleEnum) => {
+    setMuscle(value);
+    setIsOpen(false);
+  }
 
   return (
     <FilterByContainer>
@@ -53,7 +75,7 @@ export function FilterByMuscle({ selectedFilter }: FilterByMuscleKind) {
             Object.values(LEGS)
               .filter((muscle) => muscle !== undefined)
               .map((muscle) => (
-                <li key={muscle}>{muscle}</li>
+                <li onClick={() =>handleUpdateMuscle(muscle)} key={muscle}>{muscle}</li>
               ))}
             {selectedFilter === FilterType.ARMS &&
             Object.values(ARMS)
@@ -65,19 +87,19 @@ export function FilterByMuscle({ selectedFilter }: FilterByMuscleKind) {
             Object.values(SHOULDERS)
               .filter((muscle) => muscle !== undefined)
               .map((muscle) => (
-                <li key={muscle}>{muscle}</li>
+                <li onClick={() =>handleUpdateMuscle(muscle)} key={muscle}>{muscle}</li>
               ))}
             {selectedFilter === FilterType.CHEST &&
             Object.values(CHEST)
               .filter((muscle) => muscle !== undefined)
               .map((muscle) => (
-                <li key={muscle}>{muscle}</li>
+                <li onClick={() =>handleUpdateMuscle(muscle)} key={muscle}>{muscle}</li>
               ))}
             {selectedFilter === FilterType.BACKS &&
             Object.values(BACKS)
               .filter((muscle) => muscle !== undefined)
               .map((muscle) => (
-                <li key={muscle}>{muscle}</li>
+                <li onClick={() =>handleUpdateMuscle(muscle)} key={muscle}>{muscle}</li>
               ))}
         </PriorityFilter>
       )}

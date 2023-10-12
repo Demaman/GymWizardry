@@ -15,6 +15,7 @@ const FilterContainer = styled.div`
     align-items: start;
     background-color: var(--bg-secondary);
     padding-right: 311px;
+    justify-content: space-between;
 `
 export function FilterBar(props: FilterBarProps) {
 

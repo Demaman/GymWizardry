@@ -64,7 +64,8 @@ export function FilterByType() {
             <FilterItem 
                 selected={type === FilterType.SHOULDERS } 
                 onClick = {() => HandleChangeType(FilterType.SHOULDERS)}>
-                     Ombros
+                    &nbsp;
+                    Ombros
             </FilterItem>
             <FilterByMuscle selectedFilter={type} />
         </FilterList>
