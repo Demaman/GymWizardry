@@ -11,6 +11,7 @@ const fetcher = async () => {
           name
           category
           id
+          image_url
         }
       }`,
     });

@@ -1,16 +1,27 @@
-"use client"
+import { useExercises } from "@/hooks/use_exercises";
+import { ExerciseCard } from "./exercise_card";
+import styled from "styled-components";
 
-import { useExercises } from "@/hooks/use_exercises"
+const ListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+`;
 
-interface ExerciseListProps{
+export function ExercisesList() {
+  const { data } = useExercises();
+  console.log(data);
 
-}
-
-export function ExercisesList(props: ExerciseListProps){
-    const {data} = useExercises();
-    console.log(data);
-
-    return (
-        <></>
-    )
+  return (
+    <ListContainer>
+      {data?.map((exercise) => (
+        <ExerciseCard
+          key={exercise.id}
+          name={exercise.name}
+          category={exercise.category}
+          image_url={exercise.image_url}
+        />
+      ))}
+    </ListContainer>
+  );
 }
