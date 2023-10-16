@@ -6,11 +6,18 @@ const ParentContainer = styled.div`
   width: 100%; 
 `;
 
+interface Exercise {
+  id: number;
+  name: string;
+  category: string;
+  image_url: string;
+}
+
 const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
-  margin-top: 28px
+  margin-top: 28px;
 `;
 
 export function ExercisesList() {
@@ -20,7 +27,7 @@ export function ExercisesList() {
   return (
     <ParentContainer>
       <ListContainer>
-        {data?.map((exercise) => (
+        {data?.map((exercise: Exercise) => (
           <ExerciseCard
             key={exercise.id}
             name={exercise.name}
