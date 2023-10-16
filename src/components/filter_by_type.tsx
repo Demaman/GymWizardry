@@ -3,6 +3,8 @@ import { FilterType } from "@/constants/filter_types";
 import { useFilter } from "@/hooks/use_filter";
 import styled from "styled-components";
 import { FilterByMuscle } from "./filter_by_muscle_kind";
+import { useContext } from "react";
+import { FilterContext } from "@/contexts/filter_context";
 
 interface FilterItemProps{
     selected: boolean;
@@ -28,46 +30,45 @@ const FilterItem = styled.li<FilterItemProps>`
 `
 
 export function FilterByType() {
-    const { type, setType } = useFilter();
-  
+    const { category, setCategory } = useContext(FilterContext);
     const HandleChangeType = (value: FilterType) => {
-      setType(value);
+      setCategory(value);
     }
+
   
     return (
       <FilterList>
             <FilterItem 
-                selected={type === FilterType.ALL} 
+                selected={category === FilterType.ALL} 
                 onClick={() => HandleChangeType(FilterType.ALL)}>
                     Todos os exercícios
             </FilterItem>
             <FilterItem 
-                selected={type === FilterType.LEGS } 
+                selected={category === FilterType.LEGS } 
                 onClick = {() => HandleChangeType(FilterType.LEGS)}>
                     Pernas
             </FilterItem>
             <FilterItem 
-                selected={type === FilterType.CHEST } 
+                selected={category === FilterType.CHEST } 
                 onClick = {() => HandleChangeType(FilterType.CHEST)}>
                     Peito
             </FilterItem>
             <FilterItem 
-                selected={type === FilterType.BACKS } 
+                selected={category === FilterType.BACKS } 
                 onClick = {() => HandleChangeType(FilterType.BACKS)}> 
                     Costas
             </FilterItem>
             <FilterItem 
-                selected={type === FilterType.ARMS}
+                selected={category === FilterType.ARMS}
                 onClick = {() => HandleChangeType(FilterType.ARMS)}>
                     Biceps e Triceps
             </FilterItem>
             <FilterItem 
-                selected={type === FilterType.SHOULDERS } 
+                selected={category === FilterType.SHOULDERS } 
                 onClick = {() => HandleChangeType(FilterType.SHOULDERS)}>
                     &nbsp;
                     Ombros
             </FilterItem>
-            <FilterByMuscle selectedFilter={type} />
         </FilterList>
     )
 }

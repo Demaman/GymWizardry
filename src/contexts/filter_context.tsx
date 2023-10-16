@@ -10,12 +10,12 @@ type MuscleEnum = LEGS | CHEST | BACKS | SHOULDERS | ARMS;
 export const FilterContext = createContext({
   search: '',
   page: 0,
-  type: FilterType.ALL,
+  category: FilterType.ALL,
   muscle: {} as MuscleEnum, // Initialize muscle as an empty object
-  setMuscle: (muscle: MuscleEnum) => {}, // Initialize setMuscle as an empty function
+  setMuscle: (muscle: MuscleEnum) => null, // Initialize setMuscle as an empty function
   setSearch: (value: string) => {},
   setPage: (value: number) => {},
-  setType: (value: FilterType) => {},
+  setCategory: (value: FilterType) => {},
 });
 
 interface ProviderProps {
@@ -25,20 +25,20 @@ interface ProviderProps {
 export function FilterContextProvider({ children }: ProviderProps) {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
-  const [type, setType] = useState(FilterType.ALL);
-  const [muscle, setMuscle] = useState({} as MuscleEnum); // Initialize muscle state
+  const [category, setCategory] = useState(FilterType.ALL);
+  const [muscle, setMuscle] = useState(null as MuscleEnum);
 
   return (
     <FilterContext.Provider
       value={{ 
         search, 
         page, 
-        type, 
+        category, 
         muscle, 
         setMuscle, 
         setSearch, 
         setPage, 
-        setType 
+        setCategory 
     }}
     >
       {children}
