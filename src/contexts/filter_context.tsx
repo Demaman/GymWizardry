@@ -5,14 +5,14 @@ import { LEGS, CHEST, SHOULDERS, BACKS, ARMS } from "@/constants/muscle_type";
 import { ReactNode, createContext, useState } from "react";
 
 // Define a union type for all possible muscle enums
-type MuscleEnum = LEGS | CHEST | BACKS | SHOULDERS | ARMS;
+type MuscleEnum = LEGS | CHEST | BACKS | SHOULDERS | ARMS | null;
 
 export const FilterContext = createContext({
   search: '',
   page: 0,
   category: FilterType.ALL,
   muscle: {} as MuscleEnum, // Initialize muscle as an empty object
-  setMuscle: (muscle: MuscleEnum) => null, // Initialize setMuscle as an empty function
+  setMuscle: (muscle: MuscleEnum) => {}, // Initialize setMuscle as an empty function
   setSearch: (value: string) => {},
   setPage: (value: number) => {},
   setCategory: (value: FilterType) => {},
