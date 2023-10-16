@@ -4,6 +4,7 @@ import {styled} from "styled-components"
 import {Saira_Stencil_One} from 'next/font/google';
 import { PrimaryWInputSearchIcon } from "./primary_input";
 import { InputHTMLAttributes } from "react";
+import { FilterByMuscle } from "./filter_by_muscle_kind";
 
 const sairaStencil= Saira_Stencil_One({
   weight: ['400'],
