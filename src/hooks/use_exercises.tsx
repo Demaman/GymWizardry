@@ -59,10 +59,8 @@ const MountQuery = (category: FilterType, muscle: MuscleType | null) => {
 export function useExercises() {
   const { category, muscle } = useFilter();
   const filtered_query = MountQuery(category, muscle);
-  const { data, isLoading, isError } = useQuery(["exercises", category, muscle], () => fetchExercises(filtered_query));
+  const { data } = useQuery(["exercises", category, muscle], () => fetchExercises(filtered_query));
 
-  if (isLoading) return "Loading...";
-  if (isError) return `Error fetching data: ${isError.message}`;
 
   return {
     data: data?.data.allExercises,
