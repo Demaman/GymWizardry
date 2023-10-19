@@ -5,6 +5,7 @@ import { FilterType } from "@/constants/filter_types";
 import { GetCategoryByType } from "@/utils/get_category_by_type";
 import { ARMS, BACKS, CHEST, LEGS, SHOULDERS } from "@/constants/muscle_type";
 import { GetMuscleByType } from "@/utils/get_muscle_by_type";
+import { useDeferredValue } from "react";
 
 type MuscleType = LEGS | CHEST | ARMS | BACKS | SHOULDERS;
 
@@ -57,12 +58,15 @@ const MountQuery = (category: FilterType, muscle: MuscleType | null) => {
 
 
 export function useExercises() {
-  const { category, muscle } = useFilter();
+  const { category, muscle, search } = useFilter();
+  const searchDeffered = useDeferredValue(search);
   const filtered_query = MountQuery(category, muscle);
   const { data } = useQuery(["exercises", category, muscle], () => fetchExercises(filtered_query));
 
+  const exercises = data?.data.allExercises
+  const filteredExercises = exercises?.filter((exercise: any) => exercise.name.toLowerCase().includes(searchDeffered.toLowerCase()))
 
   return {
-    data: data?.data.allExercises,
+    data: filteredExercises,
   };
 }

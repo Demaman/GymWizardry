@@ -5,6 +5,7 @@ import {Saira_Stencil_One} from 'next/font/google';
 import { PrimaryWInputSearchIcon } from "./primary_input";
 import { InputHTMLAttributes } from "react";
 import { FilterByMuscle } from "./filter_by_muscle_kind";
+import { useFilter } from "@/hooks/use_filter";
 
 const sairaStencil= Saira_Stencil_One({
   weight: ['400'],
@@ -30,10 +31,16 @@ const Logo = styled.a`
 `
  
 export function Header(props: HeaderProps){
+    const {setSearch, search} = useFilter();
+
     return (
         <TagHeader>
             <Logo className={sairaStencil.className}> WizardryGym </Logo>
-            <PrimaryWInputSearchIcon placeholder="Pesquisando por algo?"/>
+            <PrimaryWInputSearchIcon 
+            value={search}
+            handleChange={setSearch}
+            placeholder="Looking for something?"
+            />
         </TagHeader>
     )
 }

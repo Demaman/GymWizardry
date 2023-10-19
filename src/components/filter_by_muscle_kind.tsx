@@ -14,7 +14,7 @@ interface FilterByMuscleKind {
 
 const FilterByContainer = styled.div`
   position: absolute;
-  top: 23%; 
+  top: 19%; 
   right: 4%; 
   display: flex;
   align-items: center;
@@ -70,7 +70,7 @@ export function FilterByMuscle({ selectedFilter }: FilterByMuscleKind) {
 
   return (
     <FilterByContainer>
-      <button onClick={handleOpen}>Organizar por</button>
+      <button onClick={handleOpen}>Filter by</button>
       {isOpen && (
         <PriorityFilter>
             {selectedFilter === FilterType.LEGS &&

@@ -27,14 +27,17 @@ const InputContainer = styled.div`
         transform: translateY(-50%);
     }
 `
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>{}
+interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
+    value: string,
+    handleChange: (value: string) => void
+}
 
 
 export function PrimaryWInputSearchIcon(props: InputProps){
     return(
         <InputContainer>
-            <PrimaryInput {...props} />
+            <PrimaryInput {...props} onChange={(event) => props.handleChange(event.target.value)} />
             <SearchIcont></SearchIcont>
         </InputContainer>
     )
-} 
+}

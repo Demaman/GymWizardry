@@ -41,33 +41,33 @@ export function FilterByType() {
             <FilterItem 
                 selected={category === FilterType.ALL} 
                 onClick={() => HandleChangeType(FilterType.ALL)}>
-                    Todos os exercícios
+                    ALL EXERCISES
             </FilterItem>
             <FilterItem 
                 selected={category === FilterType.LEGS } 
                 onClick = {() => HandleChangeType(FilterType.LEGS)}>
-                    Pernas
+                    LEGS
             </FilterItem>
             <FilterItem 
                 selected={category === FilterType.CHEST } 
                 onClick = {() => HandleChangeType(FilterType.CHEST)}>
-                    Peito
+                    CHEST
             </FilterItem>
             <FilterItem 
                 selected={category === FilterType.BACKS } 
                 onClick = {() => HandleChangeType(FilterType.BACKS)}> 
-                    Costas
+                    BACKS
             </FilterItem>
             <FilterItem 
                 selected={category === FilterType.ARMS}
                 onClick = {() => HandleChangeType(FilterType.ARMS)}>
-                    Biceps e Triceps
+                    BICEPS AND TRICEPS
             </FilterItem>
             <FilterItem 
                 selected={category === FilterType.SHOULDERS } 
                 onClick = {() => HandleChangeType(FilterType.SHOULDERS)}>
                     &nbsp;
-                    Ombros
+                    SHOULDERS
             </FilterItem>
         </FilterList>
     )
