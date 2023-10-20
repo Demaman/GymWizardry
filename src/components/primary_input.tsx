@@ -3,7 +3,7 @@ import { SearchIcont } from "./search_icont";
 import { InputHTMLAttributes } from "react";
 
 export const PrimaryInput = styled.input`
-    width: 352px;
+    width: 100%;
     border-radius: 8px;
     padding: 10px 16px;
     border: none;
@@ -11,20 +11,30 @@ export const PrimaryInput = styled.input`
     font-family: inherit;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 20px;
     color: var(--text-dark);
+
+    @media(min-width: ${props => props.theme.DesktopBreakPoint}){
+        line-height: 22px;
+        font-size: 14px;
+    }
+
 `
 
 const InputContainer = styled.div`
     position: relative;
-    widht: 352px;
+    widht: 250px;
 
     svg{
         position: absolute;
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
+    }
+    
+    @media(min-width: ${props => props.theme.DesktopBreakPoint}){
+        width: 352px;
     }
 `
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
@@ -36,7 +46,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 export function PrimaryWInputSearchIcon(props: InputProps){
     return(
         <InputContainer>
-            <PrimaryInput {...props} onChange={(event) => props.handleChange(event.target.value)} />
+            <PrimaryInput onChange={(event) => props.handleChange(event.target.value)} {...props} />
             <SearchIcont></SearchIcont>
         </InputContainer>
     )

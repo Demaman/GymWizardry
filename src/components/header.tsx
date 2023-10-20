@@ -3,8 +3,6 @@
 import {styled} from "styled-components"
 import {Saira_Stencil_One} from 'next/font/google';
 import { PrimaryWInputSearchIcon } from "./primary_input";
-import { InputHTMLAttributes } from "react";
-import { FilterByMuscle } from "./filter_by_muscle_kind";
 import { useFilter } from "@/hooks/use_filter";
 
 const sairaStencil= Saira_Stencil_One({
@@ -20,7 +18,18 @@ const TagHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 12px 24px;
+    
+    >div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    @media (min-width: 768px){
+        padding: 20px 160px;
+    }
 `
 
 const Logo = styled.a`
@@ -28,6 +37,10 @@ const Logo = styled.a`
     font-weight: 400;
     font-size: 40px;
     line-height: 150%;
+
+    @media (min-width: ${props => props.theme.DesktopBreakPoint}){
+        font-size: 40px;
+    }
 `
  
 export function Header(props: HeaderProps){
@@ -36,11 +49,13 @@ export function Header(props: HeaderProps){
     return (
         <TagHeader>
             <Logo className={sairaStencil.className}> WizardryGym </Logo>
-            <PrimaryWInputSearchIcon 
-            value={search}
-            handleChange={setSearch}
-            placeholder="Looking for something?"
-            />
+            <div>
+                <PrimaryWInputSearchIcon 
+                value={search}
+                handleChange={setSearch}
+                placeholder="Looking for something?"
+                />
+            </div>
         </TagHeader>
     )
 }

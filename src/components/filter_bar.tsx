@@ -11,7 +11,7 @@ const FilterContainer = styled.div`
   width: 100%;
   align-items: start;
   background-color: var(--bg-secondary);
-  padding-right: 311px;
+  padding-right: 80px;
   justify-content: space-between;
 `;
 

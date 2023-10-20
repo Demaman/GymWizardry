@@ -4,6 +4,7 @@ import { Saira } from 'next/font/google';
 import './globals.css';
 import { Header } from '../components/header';
 import { FilterContextProvider } from '@/contexts/filter_context';
+import { DefaultProviders } from '@/components/default_providers';
 
 const saira = Saira({
   weight: ['300', '400', '500', '600'],
@@ -19,18 +20,14 @@ const bodyStyle = {
   backgroundColor: '#b8bac7', // Corrected property name
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({children,}: {children: ReactNode;}) {
   return (
     <html lang='en'>
         <body className={saira.className} style={bodyStyle}>
-          <FilterContextProvider>
+          <DefaultProviders>
             <Header />
             {children}
-          </FilterContextProvider>
+          </DefaultProviders>
       </body>
     </html>
   );
