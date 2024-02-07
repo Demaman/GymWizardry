@@ -27,7 +27,7 @@ const TagHeader = styled.header`
         gap: 24px;
     }
 
-    @media (min-width: 768px){
+    @media (min-width: ${props => props.theme.DesktopBreakPoint}){
         padding: 20px 160px;
     }
 `
