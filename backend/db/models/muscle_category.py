@@ -8,3 +8,5 @@ class MuscleCategory(Base):
     __tablename__ = 'muscle_category'
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
+
+    muscle = relationship('muscle', back_populates='muscle_category')
